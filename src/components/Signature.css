@@ -1,0 +1,11 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Akronim&display=swap');
+.signature{
+    font-size: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    /* font-family: 'Ephesis', cursive; */
+    font-family: 'Akronim', cursive;
+    float: right;
+}

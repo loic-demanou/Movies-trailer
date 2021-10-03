@@ -73,6 +73,7 @@ export default function ContentModal({children, media_type, id}) {
                 }}
             >
                 <Fade in={open}>
+
                    {content && (<Box sx={style}>
                         <div className="ContentModal">
                             <img className="ContentModal__portrait" 
@@ -85,7 +86,7 @@ export default function ContentModal({children, media_type, id}) {
                             alt={content.name || content.title}
                             />
                             <div className="ContentModal__about">
-                                <span className="ContentModal__title">
+                                <span className="ContentModal__title" style={{ fontSize:"33px", marginBottom:"15px" }}>
                                     {content.name || content.title} ({
                                         (
                                             content.first_air_date || content.release_date || "______"
@@ -102,7 +103,7 @@ export default function ContentModal({children, media_type, id}) {
                                 target="_blank"
                                 href={`https://www.youtube.com/watch?v=${video}`}
                                 >
-                                    Watch the trailer
+                                    Visionnez la bande annonce
                                 </Button>
                             </div>
                         </div>

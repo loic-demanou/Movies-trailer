@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
-import { MuiThemeProvider } from "@material-ui/core";
+// import { MuiThemeProvider } from "@material-ui/core";
 import { createMuiTheme, Pagination } from "@mui/material";
 
 const CustomPagination = ({setPage, numOfPages=10}) => {

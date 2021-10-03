@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Patrick+Hand&display=swap');
 .header{
+    /* font-family: 'Lobster', cursive; */
     width: 100%;
     cursor: pointer;
     position: fixed;
@@ -6,7 +8,8 @@
     justify-content: center;
     text-transform: uppercase;
     background-color: #39445a;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Patrick Hand', cursive;
+    /* font-family:'Courier New', Courier, monospace; */
     font-size: 4vw;
     padding-bottom: 15px;
     box-shadow: 0px 1px 1px black;

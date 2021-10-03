@@ -9,7 +9,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import TvIcon from '@mui/icons-material/Tv';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import "./Signature.css"
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
@@ -40,26 +40,27 @@ export default function SimpleBottomNavigation() {
       >
         <BottomNavigationAction 
         style= {{ color: "white" }}
-        label="Trending" 
+        label="Tendances" 
         icon={<WhatshotIcon />} 
         />
 
         <BottomNavigationAction 
         style= {{ color: "white" }}
-        label="Movies" 
+        label="Films" 
         icon={<MovieIcon />} 
         />
 
         <BottomNavigationAction 
         style= {{ color: "white" }}
-        label="TV series" 
+        label="Séries TV" 
         icon={<TvIcon />} 
         />
         <BottomNavigationAction 
         style= {{ color: "white" }}
-        label="Search" 
+        label="Recherche" 
         icon={<SearchIcon />} 
         />
+        <div className="signature">LD.9</div>
       </BottomNavigation>
     </Box>
   );

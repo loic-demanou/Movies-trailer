@@ -1,10 +1,14 @@
-import { Button, createMuiTheme, Tab, Tabs, TextField } from "@material-ui/core";
-import { ThemeProvider } from "@mui/material";
+import { Button, createMuiTheme, Tab, Tabs, TextField } from "@mui/material";
+// import { Button, createMuiTheme, Tab, Tabs, TextField } from "@material-ui/core";
+// import { ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { Search as SearchIcon } from "@mui/icons-material";
 import axios from "axios";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import CustomPagination from "../../components/Pagination/CustomPagination";
+import loader from "../../Loader.gif"
+
 
 const Search = () => {
 
@@ -13,6 +17,14 @@ const Search = () => {
     const [searchText, setSearchText] = useState("");
     const [content, setContent] = useState();
     const [numOfPages, setNumOfPages] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+
+
+    // const darkTheme = createMuiTheme({
+    //     palette: {
+    //         type: "dark",
+    //     },
+    // });
 
     const darkTheme = createMuiTheme({
         palette: {
@@ -24,16 +36,20 @@ const Search = () => {
     });
 
     const fetchSearch = async () => {
+        
+        setIsLoading(true);
         try {
             const { data } = await axios.get(
             `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=en-US&query=${searchText}&page=${page}&include_adult=false`
             );
+            
             setContent(data.results);
             setNumOfPages(data.total_pages);
-          // console.log(data);
+            // console.log(data);
         } catch (error) {
             console.error(error);
         }
+        setIsLoading(false);
     };
     
     useEffect(() => {
@@ -44,14 +60,18 @@ const Search = () => {
 
     return ( 
         <div>
-            {/* <span className="pageTitle">Search</span> */}
+            {!isLoading && <span className="pageTitle">Rechercher un(e) film/serie</span>}
+            {isLoading && <span className="loader"> <img src={loader} alt="loading" />Chargement...</span>}
+
             <ThemeProvider theme={darkTheme}>
                 <div style={{ display: "flex", margin:"15px 0" }}>
                     <TextField 
-                    style= {{ flex:1 }}
+                    style= {{ flex:1, color: "primary" }}
                     className="searchBox"
-                    label="Search"
+                    textColor="primary"
+                    label="Rechercher"
                     variant="filled"
+                    
                     onChange= {(e) => setSearchText(e.target.value)}
                     />
                     <Button variant="contained" style={{ marginLeft:10 }} onClick={fetchSearch} >
@@ -66,8 +86,8 @@ const Search = () => {
                 }}
                 style={{ paddingBottom:5 }}
                 >
-                    <Tab style={{ width:"50%" }} label="Search Movies" />
-                    <Tab style={{ width:"50%" }} label="Search Tv Series" />
+                    <Tab style={{ width:"50%", color:"white" }} label="Trouvez des films" />
+                    <Tab style={{ width:"50%", color:"white" }} label="Trouvez des Series TV" />
                 </Tabs>
             </ThemeProvider>
 
@@ -83,7 +103,7 @@ const Search = () => {
                     vote_average= {c.vote_average}
                     />
                 ))}
-                {searchText && !content && (type ? <h2>No Series Found</h2> : <h2>No Movies Found</h2>)}
+                {searchText && !content && (type ? <h2>Aucune serie trouvée</h2> : <h2>Aucun film trouvé</h2>)}
             </div>
             { numOfPages >1 && <CustomPagination setPage={setPage} numOfPages={numOfPages} />}
 

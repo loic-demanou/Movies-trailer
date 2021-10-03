@@ -3,23 +3,23 @@ import { useEffect, useState } from "react";
 import CustomPagination from "../../components/Pagination/CustomPagination";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import "./Trending.css";
+import loader from "../../Loader.gif"
 
 const Trending = () => {
 
     const [page, setPage] = useState(1);
     const [content, setContent] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
 
 
     const fetchTrending= async () => {  
+        setIsLoading(true);
         const { data } = await axios.get(
             ` https://api.themoviedb.org/3/trending/all/day?api_key=5f51e3826ff9c24552ad45bbae31bf26&page=${page}`
             // ` https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`
-            )
-            // .catch((err) => {
-            //     console.log(err)
-            // })
-            ;
-
+            );
+            setIsLoading(false);
         setContent(data.results)
     };
 
@@ -28,9 +28,11 @@ const Trending = () => {
         // eslint-disable-next-line
     }, [page])
 
+
     return ( 
         <div>
-            <span className="pageTitle">Trending page</span>
+            {!isLoading && <span className="pageTitle">Les Tendances</span>}
+            {isLoading && <span className="loader"> <img src={loader} alt="loading" />Chargement...</span>}
             <div className="trending">
                 { content && content.map((c) => (
                     // console.log(c)
@@ -44,7 +46,7 @@ const Trending = () => {
                     />
                 ))}
             </div>
-            <CustomPagination setPage={setPage} />
+            {!isLoading && <CustomPagination setPage={setPage} />}
         </div>
      );
 }

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); */
+
 
 .ContentModal__landscape {
   object-fit: contain;
@@ -41,13 +43,13 @@
   font-weight: 300;
 }
 
-/* .ContentModal__title {
-  height: 12%;
-  font-size: 1vw;
+.ContentModal__title {
+  /* height: 2%; */
+  /* font-size: 20vw; */
   display: flex;
   align-items: center;
   justify-content: center;
-} */
+}
 
 .ContentModal__description {
   display: flex;

@@ -24,7 +24,19 @@
   padding: 4px;
   border-radius: 50px;
   color: white;
+  margin-bottom: 10px;
 }
+.loader{
+  display: flex;
+  justify-content: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2vw;
+  padding: 4px;
+  border-radius: 50px;
+  color: white;
+  margin-right: 10px;
+}
+
 @media (max-width:1000px){
   .pageTitle{
     font-size: 4.4vw;
