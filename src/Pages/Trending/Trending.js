@@ -14,13 +14,18 @@ const Trending = () => {
         const { data } = await axios.get(
             ` https://api.themoviedb.org/3/trending/all/day?api_key=5f51e3826ff9c24552ad45bbae31bf26&page=${page}`
             // ` https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`
-            );
+            )
+            // .catch((err) => {
+            //     console.log(err)
+            // })
+            ;
 
         setContent(data.results)
     };
 
     useEffect(() => {
         fetchTrending()
+        // eslint-disable-next-line
     }, [page])
 
     return ( 
