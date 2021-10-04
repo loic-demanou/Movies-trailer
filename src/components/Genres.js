@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const Genres = ({
         type,
         selectedGenres,
-        setSelectedGenres ,
+        setSelectedGenres , 
         genres,
         setGenres,
         setPage,
@@ -44,14 +44,16 @@ const Genres = ({
         <div style= {{ padding: "6px 0" }}>
             {
                 selectedGenres && selectedGenres.map((genre) => (
+                    // eslint-disable-next-line
                     <Chip key={genre.id} label= {genre.name} style={{ margin:2 }} clickable size="small" color="primary" key={genre.id}
-                    onDelete={() => handleRemove(genre)}    />
+                    onDelete={() => handleRemove(genre)} />
                 ) )
             }
             {
                 genres && genres.map((genre) => (
+                    // eslint-disable-next-line
                     <Chip key={genre.id} label= {genre.name} style={{ margin:2 }} clickable size="small" key={genre.id}
-                    onClick={() => handleAdd(genre)}  />
+                    onClick={() => handleAdd(genre)} />
                 ) )
             }
         </div>

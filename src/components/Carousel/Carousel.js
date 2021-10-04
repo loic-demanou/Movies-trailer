@@ -20,7 +20,7 @@ const Carousel = ({ media_type, id }) => {
             />
             <b className="carouselItem__txt">{c?.name}</b>
         </div>
-    ));
+    )); 
 
     const responsive = {
         0: {
@@ -43,6 +43,7 @@ const Carousel = ({ media_type, id }) => {
 
     useEffect(() => {
         fetchCredits();
+        // eslint-disable-next-line
     }, [])
 
     return (

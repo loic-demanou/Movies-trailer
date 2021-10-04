@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 // import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { img_500, unavailable, unavailableLandscape } from '../../config/config';
 import { Button } from '@material-ui/core';
@@ -54,6 +54,7 @@ export default function ContentModal({children, media_type, id}) {
     useEffect(() =>{
         fetchData();
         fetchVideo()
+        // eslint-disable-next-line
     }, [] )
 
     return (
