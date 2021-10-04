@@ -10,7 +10,7 @@ const SingleContent = ({id, poster, title, date, media_type, vote_average,}) => 
             <img className="poster" src={poster ? `${ img_300 }/${poster}` : unavailable} alt={title} />
             <strong className="title">{title}</strong>
             <span className="subTitle">
-                {media_type === "tv" ? "Tv Series" : "Movie"}
+                {media_type === "tv" ? "Série TV" : "Film"}
                 <span className="subTitle">{date}</span>
             </span>
         </ContentModal>

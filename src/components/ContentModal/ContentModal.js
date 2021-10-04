@@ -11,6 +11,8 @@ import { img_500, unavailable, unavailableLandscape } from '../../config/config'
 import { Button } from '@material-ui/core';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import Carousel from "../Carousel/Carousel";
+import CloseIcon from '@mui/icons-material/Close';
+
 
 const style = {
     position: 'absolute',
@@ -90,22 +92,25 @@ export default function ContentModal({children, media_type, id}) {
                                     {content.name || content.title} ({
                                         (
                                             content.first_air_date || content.release_date || "______"
-                                        ).substring(0, 4)
-                                    })
+                                            ).substring(0, 4)
+                                        })
                                 </span>
                                 { content.tagline && ( <i className="tagline">{content.tagline}</i> )}
                                 <span className="ContentModal__description">{content.overview}</span>
                                 <div>
                                     <Carousel media_type={media_type} id={id} />
                                 </div>
-                                <Button variant="contained" startIcon={<YouTubeIcon />}
-                                color="secondary"
+                                <Button className="watchbtn" style={{ backgroundColor:"red", opacity: 0.7, color:"white" }} startIcon={<YouTubeIcon />}
+                                // color="secondary"
                                 target="_blank"
                                 href={`https://www.youtube.com/watch?v=${video}`}
                                 >
-                                    Visionnez la bande annonce
+                                    Visionnez la bande annonce 🤩
                                 </Button>
                             </div>
+                                <span style={{ cursor:"pointer"}} >
+                                    <CloseIcon onClick= {handleClose} />  
+                                </span>
                         </div>
                     </Box>)}
                 </Fade>
