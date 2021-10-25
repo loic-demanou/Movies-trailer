@@ -41,6 +41,7 @@ export default function ContentModal({children, media_type, id}) {
         const {data} = await axios.get(
             `https://api.themoviedb.org/3/${media_type}/${id}?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=fr-FR`
         );
+        console.log(data);
         setContent(data);
     };
     const fetchVideo = async() => {
@@ -90,7 +91,9 @@ export default function ContentModal({children, media_type, id}) {
                             />
                             <div className="ContentModal__about">
                                 <span className="ContentModal__title" style={{ fontSize:"33px", marginBottom:"15px" }}>
-                                    {content.name || content.title} ({
+                                    {content.name || content.title}
+                                    <small style={{ fontSize:"15px", margin:"10px" }}> { content.original_language}</small>
+                                     ({
                                         (
                                             content.first_air_date || content.release_date || "______"
                                             ).substring(0, 4)
@@ -100,6 +103,7 @@ export default function ContentModal({children, media_type, id}) {
                                 <span className="ContentModal__description">{content.overview}</span>
                                 <div>
                                     <Carousel media_type={media_type} id={id} />
+                                    {content.budget && <span class={{ margin:"29px" }}>Budget de réalisation total : { parseFloat(content.budget).toLocaleString('en') } $</span>}
                                 </div>
                                 <Button className="watchbtn" style={{ backgroundColor:"red", opacity: 0.7, color:"white" }} startIcon={<YouTubeIcon />}
                                 // color="secondary"

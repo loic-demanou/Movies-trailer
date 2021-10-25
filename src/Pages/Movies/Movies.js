@@ -22,8 +22,8 @@ const Movies = () => {
         setIsLoading(true);
 
         const {data}= await axios.get(
-            `https://api.themoviedb.org/3/discover/movie?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate&with_genres=${genreforURL}`
-            );
+            `https://api.themoviedb.org/3/discover/movie?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`
+                );
             setIsLoading(false);
         // console.log(data);
         setContent(data.results)

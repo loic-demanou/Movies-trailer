@@ -40,7 +40,7 @@ const Search = () => {
         setIsLoading(true);
         try {
             const { data } = await axios.get(
-            `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=en-US&query=${searchText}&page=${page}&include_adult=false`
+            `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=fr-FR&query=${searchText}&page=${page}&include_adult=false`
             );
             
             setContent(data.results);
