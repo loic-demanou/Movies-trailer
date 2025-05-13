@@ -10,7 +10,6 @@ import TvIcon from '@mui/icons-material/Tv';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import "./Signature.css"
-import BrushIcon from '@mui/icons-material/Brush';
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);

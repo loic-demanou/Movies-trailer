@@ -8,18 +8,13 @@ import {
     Typography,
     IconButton,
     Chip,
-    Rating,
     Tooltip
 } from '@mui/material';
 import axios from 'axios';
 import { img_500, unavailable, unavailableLandscape } from '../../config/config';
 import { Button } from '@material-ui/core';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import CloseIcon from '@mui/icons-material/Close';
-import StarIcon from '@mui/icons-material/Star';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LanguageIcon from '@mui/icons-material/Language';
-import Carousel from "../Carousel/Carousel";
+import CloseIcon from '@mui/icons-material/Close';import Carousel from "../Carousel/Carousel";
 import loader from "../../Loader.gif"
 
 
@@ -98,6 +93,7 @@ export default function ContentModal({children, media_type, id}) {
         fetchData();
             fetchVideo();
         }
+        // eslint-disable-next-line
     }, [open]);
 
     const formatRuntime = (minutes) => {
