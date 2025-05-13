@@ -8,7 +8,6 @@ import Movies from './Pages/Movies/Movies';
 import Series from './Pages/Series/Series';
 import Search from './Pages/Search/Search';
 import NotFound from './NotFound';
-// import Search from '@mui/icons-material/Search';
 
 function App() {
   return (
