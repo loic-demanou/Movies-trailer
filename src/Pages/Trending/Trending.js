@@ -37,7 +37,6 @@ const Trending = () => {
             {isLoading && <span className="loader"> <img src={loader} alt="loading" />Chargement...</span>}
             <div className="trending">
                 { content && content.map((c) => (
-                    // console.log(c)
                     <SingleContent key={c.id} 
                     id= {c.id}
                     poster= {c.poster_path}
