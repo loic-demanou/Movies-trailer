@@ -72,10 +72,10 @@ export default function ContentModal({children, media_type, id}) {
     const fetchData = async() => {
         setIsLoading(true);
         try {
-            const {data} = await axios.get(
-                `https://api.themoviedb.org/3/${media_type}/${id}?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=fr-FR`
-            );
-            setContent(data);
+        const {data} = await axios.get(
+            `https://api.themoviedb.org/3/${media_type}/${id}?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=fr-FR`
+        );
+        setContent(data);
         } catch (error) {
             console.error("Erreur lors du chargement des données:", error);
         }
@@ -84,10 +84,10 @@ export default function ContentModal({children, media_type, id}) {
 
     const fetchVideo = async() => {
         try {
-            const {data} = await axios.get(
+        const {data} = await axios.get(
                 `https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=fr-FR`   
             );
-            setVideo(data?.results[0]?.key);
+        setVideo(data?.results[0]?.key);
         } catch (error) {
             console.error("Erreur lors du chargement de la vidéo:", error);
         }
@@ -95,7 +95,7 @@ export default function ContentModal({children, media_type, id}) {
 
     useEffect(() => {
         if (open) {
-            fetchData();
+        fetchData();
             fetchVideo();
         }
     }, [open]);
@@ -162,25 +162,25 @@ export default function ContentModal({children, media_type, id}) {
                                     <img src={loader} alt="loading" style={{ width: "50px" }} />
                                 </Box>
                             ) : content && (
-                                <div className="ContentModal">
+                        <div className="ContentModal">
                                     <img 
                                         className="ContentModal__portrait" 
                                         src={content?.poster_path ? `${img_500}/${content?.poster_path}` : unavailable} 
-                                        alt={content?.name || content?.title}
-                                    />
+                            alt={content?.name || content?.title}
+                            />
 
                                     <img 
                                         className="ContentModal__landscape" 
                                         src={content?.backdrop_path ? `${img_500}/${content?.backdrop_path}` : unavailableLandscape} 
-                                        alt={content?.name || content?.title}
-                                    />
+                            alt={content?.name || content?.title}
+                            />
 
-                                    <div className="ContentModal__about">
+                            <div className="ContentModal__about">
                                         <Typography 
                                             variant="h4" 
                                             className="ContentModal__title"
                                         >
-                                            {content?.name || content?.title}
+                                    {content?.name || content?.title}
                                             <Chip 
                                                 // icon={<LanguageIcon />}
                                                 label={content?.original_language?.toUpperCase()}
@@ -266,7 +266,7 @@ export default function ContentModal({children, media_type, id}) {
                                         </Typography>
 
                                         <Box sx={{ mt: 2 }}>
-                                            <Carousel media_type={media_type} id={id} />
+                                    <Carousel media_type={media_type} id={id} />
                                         </Box>
 
                                         {video && (
@@ -275,14 +275,14 @@ export default function ContentModal({children, media_type, id}) {
                                                 variant="contained"
                                                 startIcon={<YouTubeIcon />}
                                                 href={`https://www.youtube.com/watch?v=${video}`}
-                                                target="_blank"
+                                target="_blank"
                                                 rel="noopener noreferrer"
-                                            >
+                                >
                                                 Visionner la bande annonce
-                                            </Button>
+                                </Button>
                                         )}
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
                             )}
                         </Box>
                     </Box>

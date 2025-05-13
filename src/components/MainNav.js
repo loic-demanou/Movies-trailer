@@ -10,40 +10,32 @@ import TvIcon from '@mui/icons-material/Tv';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import "./Signature.css"
+import BrushIcon from '@mui/icons-material/Brush';
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
   const history = useHistory();
 
+  // Style minimal pour la couleur et la taille, sans casser l'empilement vertical
   const navigationStyle = {
     color: "white",
-    minWidth: 'auto',
-    padding: '6px 8px',
-    '& .MuiBottomNavigationAction-label': {
-      fontSize: '0.7rem',
-      marginTop: '2px',
-      color: "white",
-      '&.Mui-selected': {
-        color: "#1976d2",
-      },
-    },
-    '& .MuiBottomNavigationAction-iconOnly': {
-      marginBottom: '2px',
-    },
-    '& .MuiSvgIcon-root': {
-      fontSize: '1.3rem',
-      marginBottom: '2px',
-      color: "white",
-    },
     '&.Mui-selected': {
-      '& .MuiBottomNavigationAction-label': {
-        fontSize: '0.7rem',
-        color: "#1976d2",
-      },
-      '& .MuiSvgIcon-root': {
-        color: "#1976d2",
-      },
+      color: '#1976d2',
     },
+    '& .MuiBottomNavigationAction-label': {
+      fontSize: { xs: '0.75rem', sm: '0.85rem' },
+    },
+  };
+
+  const signatureStyle = {
+    fontFamily: 'Lobster, Patrick Hand, cursive',
+    fontStyle: 'italic',
+    fontWeight: 700,
+    fontSize: '1.1rem',
+    letterSpacing: '1px',
+    color: 'white',
+    pointerEvents: 'none',
+    userSelect: 'none',
   };
 
   useEffect(() => {
@@ -65,19 +57,6 @@ export default function SimpleBottomNavigation() {
         sx={{ 
           backgroundColor: "#2d313a",
           height: { xs: '60px', sm: '65px' },
-          '& .MuiBottomNavigationAction-root': {
-            minWidth: { xs: 'auto', sm: '80px' },
-            padding: { xs: '6px 4px', sm: '6px 8px' },
-            '& .MuiBottomNavigationAction-label': {
-              fontSize: { xs: '0.65rem', sm: '0.75rem' },
-            },
-            '& .MuiSvgIcon-root': {
-              fontSize: { xs: '1.2rem', sm: '1.5rem' },
-            },
-          },
-          '& .MuiBottomNavigationAction-root.Mui-selected': {
-            color: '#1976d2',
-          },
         }}
         showLabels
         value={value}
@@ -90,25 +69,30 @@ export default function SimpleBottomNavigation() {
           label="Tendances" 
           icon={<WhatshotIcon />} 
         />
-
         <BottomNavigationAction 
           sx={navigationStyle}
           label="Films" 
           icon={<MovieIcon />} 
         />
-
         <BottomNavigationAction 
           sx={navigationStyle}
           label="Séries" 
           icon={<TvIcon />} 
         />
-
         <BottomNavigationAction 
           sx={navigationStyle}
           label="Recherche" 
           icon={<SearchIcon />} 
         />
-        <div className="signature">LD.9</div>
+        <BottomNavigationAction
+          sx={{
+            '& .MuiBottomNavigationAction-label': signatureStyle,
+          }}
+          label="LD.9"
+          icon={null}
+          value={-1}
+          disabled
+        />
       </BottomNavigation>
     </Box>
   );
