@@ -15,7 +15,7 @@ FROM nginx:alpine
 # Copie le build React dans le dossier de nginx
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Copie la config nginx personnalisée (optionnel)
+# Copie la config nginx personnalisée (optionnel.)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
