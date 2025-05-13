@@ -23,7 +23,6 @@ const Series = () => {
 
         const {data}= await axios.get(`
         https://api.themoviedb.org/3/discover/tv?api_key=5f51e3826ff9c24552ad45bbae31bf26&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate&with_genres=${genreforURL}`);
-        // console.log(data);
         setIsLoading(false);
         setContent(data.results)
         setNumOfPages(data.total_pages)
@@ -48,7 +47,6 @@ const Series = () => {
                 />
             <div className="trending">
                 { content && content.map((c) => (
-                    // console.log(c)
                     <SingleContent key={c.id} 
                     id= {c.id}
                     poster= {c.poster_path}
