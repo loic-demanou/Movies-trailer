@@ -1,0 +1,103 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.trending {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Effet de survol sur les cartes */
+.media {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Style pour le loader */
+.loader {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+/* Effet de glassmorphism pour le Paper */
+.MuiPaper-root {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animation pour les tabs */
+.MuiTab-root {
+    position: relative;
+    overflow: hidden;
+}
+
+.MuiTab-root::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, #aaa);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.MuiTab-root:hover::after {
+    width: 100%;
+}
+
+/* Style pour le champ de recherche */
+.MuiTextField-root {
+    transition: all 0.3s ease;
+}
+
+.MuiTextField-root:focus-within {
+    transform: scale(1.01);
+}
+
+/* Style pour le bouton de recherche */
+.MuiButton-root {
+    position: relative;
+    overflow: hidden;
+}
+
+.MuiButton-root::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.MuiButton-root:hover::before {
+    width: 300px;
+    height: 300px;
+} 

@@ -1,8 +1,17 @@
 import './Header.css';
 
 const Header = () => {
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     return ( 
-        <span onClick={ () => window.scroll(0, 0)} className="header">📺 Movies trailer 🎬🎥</span>
+        <div onClick={scrollToTop} className="header">
+            <span className="header-title">📺 Movies Trailer 🎬</span>
+        </div>
      );
 }
  

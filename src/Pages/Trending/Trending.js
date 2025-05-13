@@ -10,7 +10,7 @@ const Trending = () => {
     const [page, setPage] = useState(1);
     const [content, setContent] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
+    const [numOfPages, setNumOfPages] = useState(1);
 
 
     const fetchTrending= async () => {  
@@ -21,6 +21,8 @@ const Trending = () => {
             );
             setIsLoading(false);
         setContent(data.results)
+        console.log(data.total_pages);
+        setNumOfPages(data.total_pages)
     };
 
     useEffect(() => {
@@ -46,7 +48,7 @@ const Trending = () => {
                     />
                 ))}
             </div>
-            {!isLoading && <CustomPagination setPage={setPage} />}
+            {numOfPages >1 && <CustomPagination setPage={setPage} numOfPages={numOfPages} />} 
         </div>
      );
 }

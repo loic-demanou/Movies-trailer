@@ -1,25 +1,41 @@
 import { ThemeProvider } from "@emotion/react";
 // import { MuiThemeProvider } from "@material-ui/core";
-import { createMuiTheme, Pagination } from "@mui/material";
+import { createTheme, Pagination } from "@mui/material";
 
 const CustomPagination = ({setPage, numOfPages=10}) => {
 
-    const darkTheme = createMuiTheme({
+    const darkTheme = createTheme({
         palette: {
-            type: "dark",
+            mode: "dark",
+            primary: {
+                main: "#fff",
+            },
+        },
+        components: {
+            MuiPagination: {
+                styleOverrides: {
+                    root: {
+                        "& .MuiPaginationItem-root": {
+                            color: "#fff",
+                        },
+                    },
+                },
+            },
         },
     });
 
-    const handlePageChange = (page) =>{
-        setPage(page);
-        window.scroll(0, 0);
+    const handlePageChange = (event, value) =>{
+        setPage(value);
+        window.scroll(0, 0); 
+        console.log(value);
     };
 
     return ( 
-        <div style={{ display:"flex", justifyContent: "center", marginTop: 10 }}>
-            <ThemeProvider theme={darkTheme} > 
+        <div style={{ display:"flex", justifyContent: "center", marginTop: 10, color: "white" }}>
+            <ThemeProvider theme={darkTheme}> 
                 <Pagination 
-                count={numOfPages} onChange = {(e) => handlePageChange(e.target.textContent)} 
+                count={numOfPages} 
+                onChange={handlePageChange}
                 hideNextButton
                 hidePrevButton
                 color="primary"

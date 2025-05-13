@@ -59,7 +59,7 @@ const Series = () => {
                     />
                 ))}
             </div>
-            { numOfPages >1 && <CustomPagination setPage={setPage} numOfPages={numOfPages} />}
+            { numOfPages >1 && <CustomPagination setPage={setPage} numOfPages={numOfPages} />} 
 
         </div>
      );
