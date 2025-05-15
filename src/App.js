@@ -8,9 +8,12 @@ import Movies from './Pages/Movies/Movies';
 import Series from './Pages/Series/Series';
 import Search from './Pages/Search/Search';
 import NotFound from './NotFound';
+import React from 'react';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
+    <AuthProvider>
       <Router>
         <Header />
         <div className="app">
@@ -26,6 +29,7 @@ function App() {
         </div>
         <SimpleBottomNavigation />
       </Router>
+    </AuthProvider>
   );
 }
 

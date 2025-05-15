@@ -141,9 +141,6 @@ export default function ContentModal({children, media_type, id}) {
                                 padding: '8px',
                             }}
                         >
-                            {/* <span style={{ backgroundColor: 'transparent', color: 'transparent' }}>
-                                close
-                            </span> */}
                             <CloseIcon />
                         </IconButton>
 

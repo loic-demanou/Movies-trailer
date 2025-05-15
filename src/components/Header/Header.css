@@ -1,54 +1,127 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 .header {
     width: 100%;
-    cursor: pointer;
     position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    text-transform: uppercase;
+    padding: 12px 0px;
     background: linear-gradient(135deg, rgba(45, 49, 58, 0.95) 0%, rgba(57, 68, 90, 0.95) 100%);
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.5vw;
-    padding: 18px 0;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     color: white;
-    z-index: 100;
-    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    height: 50px;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header-icon {
+    font-size: 1.8rem;
+    margin: 0 8px;
+    filter: grayscale(30%) opacity(0.9);
 }
 
 .header-title {
+    font-size: 1.6rem;
+    font-weight: 700;
     letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.auth-section {
+    display: flex;
+    align-items: center;
+}
+
+.auth-section .MuiTypography-subtitle1 {
     font-weight: 600;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
 }
 
-.header:hover {
-    background: linear-gradient(135deg, rgba(50, 55, 65, 0.98) 0%, rgba(62, 73, 98, 0.98) 100%);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+.login-button,
+.logout-button {
+    padding: 8px 18px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
-@media (max-width: 1000px) {
-    .header {
-        padding: 15px 0;
-        font-size: 4.5vw;
-    }
+.login-button {
+    background-color: #1abc9c !important;
+    color: white !important;
+}
+
+.login-button:hover {
+    background-color: #16a085 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
+}
+
+.logout-button {
+    background-color: #e74c3c !important;
+    color: white !important;
+}
+
+.logout-button:hover {
+    background-color: #c0392b !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important;
 }
 
 @media (max-width: 768px) {
     .header {
-        font-size: 5.5vw;
-        padding: 12px 0;
+        padding: 10px 15px;
+        height: 65px;
     }
     .header-title {
-        letter-spacing: 0.5px;
+        font-size: 1.3rem;
+    }
+    .header-icon {
+        font-size: 1.6rem;
+        margin: 0 5px;
+    }
+    .auth-section .MuiTypography-subtitle1 {
+        display: none;
+    }
+    .login-button,
+    .logout-button {
+        padding: 7px 15px !important;
+        font-size: 0.85rem !important;
+    }
+    .auth-section .MuiAvatar-root {
+        width: 35px !important;
+        height: 35px !important;
+        margin-right: 8px !important;
     }
 }
 
 @media (max-width: 480px) {
-    .header {
-        font-size: 6.5vw;
-        padding: 10px 0;
+    .header-title-container {
+    }
+    .header-title {
+        font-size: 1.1rem;
+    }
+    .login-button,
+    .logout-button {
+        padding: 6px 10px !important;
+        font-size: 0.75rem !important;
+    }
+    .header-icon {
+        display: none;
     }
 }
