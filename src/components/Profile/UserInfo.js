@@ -64,20 +64,57 @@ const UserInfo = () => {
         <Grid item xs={12} sm={8} md={9}>
           {editMode ? (
             <Box component="form" noValidate autoComplete="off">
-                <TextField 
+                <TextField
                     label="Nom d'affichage"
-                    fullWidth 
-                    margin="normal" 
-                    value={displayName} 
-                    onChange={(e) => setDisplayName(e.target.value)} 
+                    fullWidth
+                    margin="normal"
+                    value={displayName}
+                    onChange={(e) => setDisplayName(e.target.value)}
+                    InputLabelProps={{
+                        style: { color: 'white' },
+                    }}
+                    sx={{ 
+                        input: { color: 'white' },
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: 'rgba(255, 255, 255, 0.23)', // Lighter border for dark mode
+                            },
+                            '&:hover fieldset': {
+                                borderColor: 'white',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: 'white',
+                            },
+                        }
+                    }}
                 />
-                <TextField 
+                <TextField
                     label="Email"
-                    fullWidth 
-                    margin="normal" 
-                    value={email} 
+                    fullWidth
+                    margin="normal"
+                    value={email}
                     disabled // L'email est généralement non modifiable directement ici pour la sécurité
                     helperText="L'email ne peut pas être modifié ici."
+                    InputLabelProps={{
+                        style: { color: 'white' }, // Slightly dimmer for disabled
+                    }}
+                    // FormHelperTextProps={{
+                    //     style: { color: '#ccc ' }
+                    // }}
+                    sx={{
+                        input: { color: 'rgba(255, 255, 255, 0.7)' }, // Dimmer for disabled input
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: '#ccc ',
+                            },
+                             '&.Mui-disabled fieldset': { // Style for disabled state
+                                borderColor: 'rgba(255, 255, 255, 0.12)',
+                            },
+                        },
+                        '& .Mui-disabled': { // Style for disabled label and potentially other parts
+                            color: '#ccc !important',
+                        }
+                    }}
                 />
                 {/* On pourrait ajouter un champ pour photoURL si on gère l'upload */}
                 <Box sx={{ mt: 2, textAlign: 'right'}}>
