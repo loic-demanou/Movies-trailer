@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { useHistory  } from 'react-router-dom';
+import { useHistory, Link as RouterLink } from 'react-router-dom';
 import './Header.css';
 import { useAuth } from '../../contexts/AuthContext'; // Ajuster le chemin si nécessaire
 import AuthModal from '../AuthModal'; // Ajuster le chemin si nécessaire
 import Button from '@mui/material/Button'; // Pour un style cohérent
 import Avatar from '@mui/material/Avatar'; // Importer Avatar
 import Typography from '@mui/material/Typography'; // Pour le nom d'utilisateur
+import FavoriteIcon from '@mui/icons-material/Favorite'; // Pour le bouton wishlist
+import IconButton from '@mui/material/IconButton'; // Pour le bouton wishlist
+import Tooltip from '@mui/material/Tooltip'; // Importer Tooltip
 
 // Fonction pour obtenir les initiales
 const getInitials = (name) => {
@@ -54,13 +57,22 @@ const Header = () => {
                 <div className="auth-section">
                     {currentUser ? (
                         <>
-                            <Avatar 
-                                src={currentUser.photoURL || undefined} 
-                                alt={currentUser.displayName || currentUser.email}
-                                sx={{ width: 40, height: 40, marginRight: '10px', bgcolor: '#673ab7' /* Couleur de fond si pas d'image */ }}
-                            >
-                                {!currentUser.photoURL && getInitials(currentUser.displayName || currentUser.email)}
-                            </Avatar>
+                            {/* <Tooltip title="Mes Favoris">
+                                <IconButton component={RouterLink} to="/wishlist" color="inherit" sx={{ marginRight: '10px' }}>
+                                    <FavoriteIcon sx={{ color: 'white'}} />
+                                </IconButton>
+                            </Tooltip> */}
+                            <Tooltip title="Mon Profil">
+                                <IconButton component={RouterLink} to="/profile" sx={{ p: 0, marginRight: '10px' }}>
+                                    <Avatar 
+                                        src={currentUser.photoURL || undefined} 
+                                        alt={currentUser.displayName || currentUser.email}
+                                        sx={{ width: 40, height: 40, bgcolor: '#673ab7', marginRight: '10px' }}
+                                    >
+                                        {!currentUser.photoURL && getInitials(currentUser.displayName || currentUser.email)}
+                                    </Avatar>
+                                </IconButton>
+                            </Tooltip>
                             <Typography variant="subtitle1" sx={{ color: 'white', marginRight: '15px', display: { xs: 'none', sm: 'block' } }}>
                                 {currentUser.displayName || currentUser.email}
                             </Typography>
