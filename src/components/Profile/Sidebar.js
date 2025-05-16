@@ -40,7 +40,7 @@ const Sidebar = ({ selectedMenu, setSelectedMenu }) => {
       </Box>
       <Divider sx={{ my: 2 }} />
       <List component="nav">
-        <ListItem disablePadding>
+        <ListItem disablePadding sx={{ borderBottom: '1px solid #3f51b5' }}>
           <ListItemButton
             selected={selectedMenu === 'profil'}
             onClick={() => setSelectedMenu('profil')}
@@ -53,7 +53,7 @@ const Sidebar = ({ selectedMenu, setSelectedMenu }) => {
             </ListItemIcon>
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding>
+        <ListItem disablePadding sx={{ borderBottom: '1px solid #3f51b5' }}>
           <ListItemButton
             selected={selectedMenu === 'favoris'}
             onClick={() => setSelectedMenu('favoris')}
