@@ -6,7 +6,6 @@ import AuthModal from '../AuthModal'; // Ajuster le chemin si nécessaire
 import Button from '@mui/material/Button'; // Pour un style cohérent
 import Avatar from '@mui/material/Avatar'; // Importer Avatar
 import Typography from '@mui/material/Typography'; // Pour le nom d'utilisateur
-import FavoriteIcon from '@mui/icons-material/Favorite'; // Pour le bouton wishlist
 import IconButton from '@mui/material/IconButton'; // Pour le bouton wishlist
 import Tooltip from '@mui/material/Tooltip'; // Importer Tooltip
 

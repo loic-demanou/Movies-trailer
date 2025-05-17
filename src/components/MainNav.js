@@ -3,13 +3,17 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
-import MovieIcon from '@mui/icons-material/Movie';
-import SearchIcon from '@mui/icons-material/Search';
-import TvIcon from '@mui/icons-material/Tv';
+// import WhatshotIcon from '@mui/icons-material/Whatshot';
+// import MovieIcon from '@mui/icons-material/Movie';
+// import SearchIcon from '@mui/icons-material/Search';
+// import TvIcon from '@mui/icons-material/Tv';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import "./Signature.css"
+import { FaSearch } from 'react-icons/fa';
+import { MdMovie } from 'react-icons/md';
+import { FaTv } from 'react-icons/fa';
+import { FaFireAlt } from 'react-icons/fa';
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
@@ -21,8 +25,12 @@ export default function SimpleBottomNavigation() {
     '&.Mui-selected': {
       color: '#1976d2',
     },
+    '&.icon-menu': {
+      color: '#1976d2',
+    },
     '& .MuiBottomNavigationAction-label': {
       fontSize: { xs: '0.75rem', sm: '0.85rem' },
+      marginTop: '5px',
     },
   };
 
@@ -51,6 +59,7 @@ export default function SimpleBottomNavigation() {
          bottom: 0,
          backgroundColor: "#2d313a",
          zIndex: 100,
+         color: 'white',
         }}>
       <BottomNavigation
         sx={{ 
@@ -66,22 +75,22 @@ export default function SimpleBottomNavigation() {
         <BottomNavigationAction 
           sx={navigationStyle}
           label="Tendances" 
-          icon={<WhatshotIcon />} 
+          icon={<FaFireAlt size={23} className="icon-menu" />} 
         />
         <BottomNavigationAction 
           sx={navigationStyle}
           label="Films" 
-          icon={<MovieIcon />} 
+          icon={<MdMovie size={23} className="icon-menu" />} 
         />
         <BottomNavigationAction 
           sx={navigationStyle}
           label="Séries" 
-          icon={<TvIcon />} 
+          icon={<FaTv size={23} className="icon-menu" />} 
         />
         <BottomNavigationAction 
           sx={navigationStyle}
           label="Recherche" 
-          icon={<SearchIcon />} 
+          icon={<FaSearch size={23} className="icon-menu" />} 
         />
         <BottomNavigationAction
           sx={{

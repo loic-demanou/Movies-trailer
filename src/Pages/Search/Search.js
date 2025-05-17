@@ -3,12 +3,13 @@ import { Button, createTheme, Tab, Tabs, TextField, Box, Container, Typography, 
 // import { ThemeProvider } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { Search as SearchIcon, Movie as MovieIcon, Tv as TvIcon } from "@mui/icons-material";
+import { Movie as MovieIcon, Tv as TvIcon } from "@mui/icons-material";
 import axios from "axios";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import CustomPagination from "../../components/Pagination/CustomPagination";
 import loader from "../../Loader.gif"
 import "./Search.css";
+import { FaSearch } from "react-icons/fa";
 
 const Search = () => {
     const [type, setType] = useState(0);
@@ -177,7 +178,7 @@ const Search = () => {
                                                 borderBottomLeftRadius: 0,
                                             }}
                                         >
-                                            <SearchIcon />
+                                            <FaSearch size={20} />
                                         </Button>
                                     ),
                                 }}

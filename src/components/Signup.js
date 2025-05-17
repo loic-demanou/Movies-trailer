@@ -70,7 +70,7 @@ export default function Signup({ setModalView, closeModal }) {
           S'inscrire
         </Button>
       </form>
-      <Typography variant="body2" align="center">
+      <Typography variant="body2" align="center" sx={{ mt: 2 }}>
         Déjà un compte?{" "}
         <Link href="#" onClick={() => setModalView(0)} sx={{ cursor: 'pointer' }}>
           Se connecter
