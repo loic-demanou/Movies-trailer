@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Badge, IconButton } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -6,11 +6,12 @@ import { img_300, unavailable } from "../../config/config";
 import ContentModal from "../ContentModal/ContentModal";
 import './SingleContent.css';
 import { useAuth } from '../../contexts/AuthContext';
-
+import axios from 'axios';
 const SingleContent = ({id, poster, title, date, media_type, vote_average}) => {
     const { currentUser, wishlist, addToWishlist, removeFromWishlist, wishlistLoading } = useAuth();
 
     const isInWishlist = currentUser ? wishlist.some(item => item.id === id) : false;
+    const [providers, setProviders] = useState([]);
 
     const handleWishlistToggle = (e) => {
         e.stopPropagation();
@@ -31,6 +32,29 @@ const SingleContent = ({id, poster, title, date, media_type, vote_average}) => {
             addToWishlist(itemData);
         }
     };
+
+    useEffect(() => {
+
+        if (media_type === "movie") {
+            axios.get(`https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=5f51e3826ff9c24552ad45bbae31bf26`)
+            // .then(res => res.json())
+            .then(({data}) => {
+                console.log(data.results.FR?.flatrate);
+                // console.log(data);
+                if (data.results && data.results.FR && data.results.FR.flatrate) {
+                    setProviders(data.results.FR.flatrate);
+                }
+            });
+        } else if (media_type === "tv") {
+            axios.get(`https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=5f51e3826ff9c24552ad45bbae31bf26`)
+            // .then(res => res.json())
+            .then(({data}) => {
+                if (data.results && data.results.FR && data.results.FR.flatrate) {
+                    setProviders(data.results.FR.flatrate);
+            }
+          });
+        }
+      }, [id, media_type]);
 
     return ( 
         <div className="media">
@@ -57,7 +81,7 @@ const SingleContent = ({id, poster, title, date, media_type, vote_average}) => {
                     {isInWishlist ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 </IconButton>
             )}
-            <ContentModal media_type={media_type} id={id} className="content-modal" 
+            <ContentModal media_type={media_type} id={id} providers={providers} className="content-modal" 
                 sx={{
                     position: 'relative',
                     // zIndex: 10,
