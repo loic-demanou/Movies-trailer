@@ -21,7 +21,7 @@ const Trending = () => {
             );
             setIsLoading(false);
         setContent(data.results)
-        console.log(data.total_pages);
+        // console.log(data.total_pages);
         setNumOfPages(data.total_pages)
     };
 

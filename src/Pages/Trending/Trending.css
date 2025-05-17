@@ -3,3 +3,13 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.pageTitle{
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2vw;
+    color: white!important;
+    font-weight: bold;
+}

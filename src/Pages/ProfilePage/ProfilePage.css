@@ -1,0 +1,47 @@
+body {
+  background-color: #f4f6f8; /* Couleur de fond générale plus claire pour la page de profil */
+}
+
+.profile-page-container {
+  padding-top: 0px !important; /* Espace par rapport au header */
+  padding-bottom: 40px !important;
+  min-height: calc(100vh - 70px); /* 70px est la hauteur approx du header */
+}
+
+.profile-page-title {
+  text-align: center;
+  margin-bottom: 30px !important;
+  color: #fff;
+  font-weight: 700 !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.sidebar-paper {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(45, 49, 58, 0.95) 0%, rgba(57, 68, 90, 0.95) 100%) !important; /* Dark background */
+  color: #ffffff !important; /* Light text color */
+  border-radius: 8px !important;
+  height: 100%; /* Pour que la sidebar prenne toute la hauteur disponible dans la grille */
+}
+
+.content-paper {
+  padding: 25px;
+  background: linear-gradient(135deg, rgba(45, 49, 58, 0.95) 0%, rgba(57, 68, 90, 0.95) 100%) !important; /* Dark background */
+  color: #ffffff !important; /* Light text color */
+  border-radius: 8px !important;
+  min-height: 400px; /* Hauteur minimale pour le contenu */
+}
+
+.loading-container-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) { /* md breakpoint de MUI */
+  .sidebar-paper {
+    margin-bottom: 20px;
+  }
+} 

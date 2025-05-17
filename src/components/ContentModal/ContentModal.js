@@ -8,14 +8,16 @@ import {
     Typography,
     IconButton,
     Chip,
-    Tooltip
+    Tooltip,
+    Avatar
 } from '@mui/material';
 import axios from 'axios';
 import { img_500, unavailable, unavailableLandscape } from '../../config/config';
 import { Button } from '@material-ui/core';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+// import YouTubeIcon from '@mui/icons-material/YouTube';
 import CloseIcon from '@mui/icons-material/Close';import Carousel from "../Carousel/Carousel";
 import loader from "../../Loader.gif"
+import { FaYoutube } from "react-icons/fa";
 
 
 const style = {
@@ -55,7 +57,7 @@ const modalContentStyle = {
     },
 };
 
-export default function ContentModal({children, media_type, id}) {
+export default function ContentModal({children, media_type, id, providers}) {
     const [open, setOpen] = React.useState(false);
     const [content, setContent] = useState();
     const [video, setVideo] = useState();
@@ -141,9 +143,6 @@ export default function ContentModal({children, media_type, id}) {
                                 padding: '8px',
                             }}
                         >
-                            {/* <span style={{ backgroundColor: 'transparent', color: 'transparent' }}>
-                                close
-                            </span> */}
                             <CloseIcon />
                         </IconButton>
 
@@ -176,7 +175,7 @@ export default function ContentModal({children, media_type, id}) {
                                             variant="h4" 
                                             className="ContentModal__title"
                                         >
-                                    {content?.name || content?.title}
+                                            {content?.name || content?.title}
                                             <Chip 
                                                 // icon={<LanguageIcon />}
                                                 label={content?.original_language?.toUpperCase()}
@@ -195,7 +194,7 @@ export default function ContentModal({children, media_type, id}) {
                                                     fontSize: '0.9em'
                                                 }}
                                             >
-                                                ({content?.first_air_date || content?.release_date || "______"})
+                                                ({(content?.first_air_date || content?.release_date)?.split('-').reverse().join('-') || "______"})
                                             </Typography>
                                         </Typography>
 
@@ -242,9 +241,9 @@ export default function ContentModal({children, media_type, id}) {
                                         </Box>
 
                                         {content.genres && (
-                                            <Box sx={{ mt:0 , mb: 2 }}>
+                                            <Box sx={{ mt:0 , mb: 2, display: 'flex', flexDirection: 'row', gap: 1 }}>
                                                 <Typography variant="subtitle1" color="white">
-                                                    Genre
+                                                    Genre :
                                                 </Typography>
                                                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                                                     {content.genres.map((genre) => (
@@ -254,6 +253,51 @@ export default function ContentModal({children, media_type, id}) {
                                             </Box>
                                         )}
 
+                                        {providers.length > 0 && (
+                                            <Box sx={{ my: 2 }}>
+                                                <Typography variant="subtitle1" gutterBottom sx={{ color: 'white', fontWeight: 'bold' }}>
+                                                    Disponible sur :
+                                                </Typography>
+                                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'flex-start', mt: 1 }}>
+                                                    {providers.map((provider) => (
+                                                        <Box 
+                                                            key={provider.provider_id} 
+                                                            sx={{
+                                                                display: 'flex', 
+                                                                flexDirection: 'column', 
+                                                                alignItems: 'center', 
+                                                                p: 1,
+                                                                width: '100px', // Adjust width as needed
+                                                                textAlign: 'center',
+                                                                borderRadius: '8px',
+                                                                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                                                                transition: 'background-color 0.3s',
+                                                                '&:hover': {
+                                                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                                                }
+                                                            }}
+                                                        >
+                                                            <Avatar 
+                                                                src={`https://image.tmdb.org/t/p/w200/${provider?.logo_path}`}
+                                                                alt={provider?.provider_name} 
+                                                                variant="rounded"
+                                                                sx={{
+                                                                    width: 50, 
+                                                                    height: 50, 
+                                                                    mb: 0.5, 
+                                                                    backgroundColor: 'transparent',
+                                                                    '& .MuiAvatar-img': { objectFit: 'contain' }
+                                                                }} 
+                                                            />
+                                                            <Typography variant="caption" sx={{ color: 'white', lineHeight: '1.2', wordBreak: 'break-word' }}>
+                                                                {provider?.provider_name}
+                                                            </Typography>
+                                                        </Box>
+                                                    ))}
+                                                </Box>
+                                            </Box>
+                                        )}
+                                        
                                         <Typography 
                                             variant="body1" 
                                             className="ContentModal__description"
@@ -262,20 +306,20 @@ export default function ContentModal({children, media_type, id}) {
                                         </Typography>
 
                                         <Box sx={{ mt: 2 }}>
-                                    <Carousel media_type={media_type} id={id} />
+                                            <Carousel media_type={media_type} id={id} />
                                         </Box>
 
                                         {video && (
                                             <Button 
                                                 className="watchbtn"
                                                 variant="contained"
-                                                startIcon={<YouTubeIcon />}
+                                                startIcon={<FaYoutube />}
                                                 href={`https://www.youtube.com/watch?v=${video}`}
-                                target="_blank"
+                                                target="_blank"
                                                 rel="noopener noreferrer"
-                                >
+                                                >
                                                 Visionner la bande annonce
-                                </Button>
+                                            </Button>
                                         )}
                             </div>
                         </div>

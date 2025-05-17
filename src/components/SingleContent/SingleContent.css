@@ -7,13 +7,27 @@
     background-color: #282c34;
     border-radius: 10px;
     position: relative;
+    /* font-family: "Montserrat", sans-serif; */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.media:hover{
+/* .wishlist-button {
+    position: absolute;
+    bottom: 0;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    z-index: 10;
+    
+} */
+
+/* .media:hover{
+    transform: scale(1.03);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     background-color: white;
     color: black;
-}
+} */
 
 @media(max-width: 550px){
     .media{
@@ -21,7 +35,7 @@
     }
 }
 .poster{
-    border-radius: 10px;
+    border-radius: 7px;
 }
 .title{
     width: 100%;
@@ -35,6 +49,4 @@
     justify-content: space-between;
     padding-bottom: 3px;
     padding: 0 2px;
-    padding-bottom: 3px;
-    opacity: 0.8;
 }

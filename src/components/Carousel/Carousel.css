@@ -5,8 +5,16 @@
     padding: 10px;
   }
   .carouselItem__img {
-    /* height: 200px; */
+    max-height: 100px;
+    max-width: 80px;
+    object-fit: cover;
     border-radius: 10px;
     margin-bottom: 5px;
     box-shadow: 0px 0px 5px black;
   }
+
+
+  /* .carouselItem__txt {
+    color: white;
+    text-align: center;
+  } */

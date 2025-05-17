@@ -1,6 +1,32 @@
+import React, { useState } from 'react';
+import { useHistory, Link as RouterLink } from 'react-router-dom';
 import './Header.css';
+import { useAuth } from '../../contexts/AuthContext'; // Ajuster le chemin si nécessaire
+import AuthModal from '../AuthModal'; // Ajuster le chemin si nécessaire
+import Button from '@mui/material/Button'; // Pour un style cohérent
+import Avatar from '@mui/material/Avatar'; // Importer Avatar
+import Typography from '@mui/material/Typography'; // Pour le nom d'utilisateur
+import IconButton from '@mui/material/IconButton'; // Pour le bouton wishlist
+import Tooltip from '@mui/material/Tooltip'; // Importer Tooltip
+
+// Fonction pour obtenir les initiales
+const getInitials = (name) => {
+  if (!name) return '?';
+  const nameParts = name.split(' ');
+  if (nameParts.length > 1) {
+    return `${nameParts[0][0]}${nameParts[nameParts.length - 1][0]}`.toUpperCase();
+  }
+  return name[0].toUpperCase();
+};
 
 const Header = () => {
+    const { currentUser, logout } = useAuth();
+    const [openModal, setOpenModal] = useState(false);
+    const history = useHistory();
+
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -8,11 +34,65 @@ const Header = () => {
         });
     };
 
-    return ( 
-        <div onClick={scrollToTop} className="header">
-            <span className="header-title">📺 Movies Trailer 🎬</span>
-        </div>
-     );
+    const handleLogout = async () => {
+        try {
+            await logout();
+            history.push('/');
+            // Gérer la déconnexion réussie si nécessaire (par exemple, redirection)
+        } catch (error) {
+            console.error("Failed to log out", error);
+            // Gérer l'échec de la déconnexion
+        }
+    };
+
+    return (
+        <>
+            <div className="header">
+                <div onClick={scrollToTop} className="header-title-container">
+                    <span className="header-icon">📺</span>
+                    <span className="header-title">Movies Trailer</span>
+                    <span className="header-icon">🎬</span>
+                </div>
+                <div className="auth-section">
+                    {currentUser ? (
+                        <>
+                            {/* <Tooltip title="Mes Favoris">
+                                <IconButton component={RouterLink} to="/wishlist" color="inherit" sx={{ marginRight: '10px' }}>
+                                    <FavoriteIcon sx={{ color: 'white'}} />
+                                </IconButton>
+                            </Tooltip> */}
+                            <Tooltip title="Mon Profil">
+                                <IconButton component={RouterLink} to="/profile" sx={{ p: 0, marginRight: '10px' }}>
+                                    <Avatar 
+                                        src={currentUser.photoURL || undefined} 
+                                        alt={currentUser.displayName || currentUser.email}
+                                        sx={{ width: 40, height: 40, bgcolor: '#673ab7', marginRight: '10px' }}
+                                    >
+                                        {!currentUser.photoURL && getInitials(currentUser.displayName || currentUser.email)}
+                                    </Avatar>
+                                </IconButton>
+                            </Tooltip>
+                            <Typography variant="subtitle1" sx={{ color: 'white', marginRight: '15px', display: { xs: 'none', sm: 'block' } }}>
+                                {currentUser.displayName || currentUser.email}
+                            </Typography>
+                            <Button 
+                                variant="contained"
+                                onClick={handleLogout}
+                                className="logout-button"
+                            >
+                                Déconnexion
+                            </Button>
+                        </>
+                    ) : (
+                        <Button variant="contained" onClick={handleOpenModal} className="login-button">
+                            Connexion
+                        </Button>
+                    )}
+                </div>
+            </div>
+            <AuthModal open={openModal} handleClose={handleCloseModal} />
+        </>
+    );
 }
- 
+
 export default Header;

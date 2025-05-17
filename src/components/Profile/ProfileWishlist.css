@@ -1,0 +1,29 @@
+.profile-wishlist-container {
+  padding: 10px;
+}
+
+.section-title-profilewishlist {
+  color: #ddd;
+  margin-bottom: 20px !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid #1abc9c; /* Couleur différente pour distinguer de UserInfo */
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.profile-wishlist-grid {
+  /* Utilise les styles de SingleContent par défaut, mais on peut surcharger ici */
+  justify-content: flex-start; /* Aligner les items à gauche par défaut */
+}
+
+.profile-wishlist-item {
+  /* Pourrait avoir besoin d'ajustements spécifiques si SingleContent ne s'adapte pas bien ici */
+  /* Assurez-vous que SingleContent est responsive */
+}
+
+.profile-wishlist-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; /* Hauteur pour le spinner dans cette section */
+} 
