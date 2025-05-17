@@ -8,7 +8,7 @@ import Movies from './Pages/Movies/Movies';
 import Series from './Pages/Series/Series';
 import Search from './Pages/Search/Search';
 import NotFound from './NotFound';
-import WishlistPage from './Pages/WishlistPage/WishlistPage';
+// import WishlistPage from './Pages/WishlistPage/WishlistPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import React from 'react';
 import { AuthProvider } from './contexts/AuthContext';
@@ -25,7 +25,7 @@ function App() {
               <Route path= '/movies' component={Movies} />
               <Route path= '/series' component={Series} />
               <Route path= '/search' component={Search} />
-              <Route path= '/wishlist' component={WishlistPage} />
+              {/* <Route path= '/wishlist' component={WishlistPage} /> */}
               <Route path= '/profile' component={ProfilePage} />
               <Route path= '*' component={NotFound} />
             </Switch>
